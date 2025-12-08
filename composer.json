@@ -1,0 +1,14 @@
+{
+    "name": "medical-system/app",
+    "description": "Medical System Management - Pure PHP MVC",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
+

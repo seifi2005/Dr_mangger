@@ -1,0 +1,14 @@
+# Redirect to public directory
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/medic/public/
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Security: Deny access to sensitive files
+<FilesMatch "^(composer\.(json|lock)|\.env|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+

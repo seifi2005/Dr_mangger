@@ -1,0 +1,343 @@
+/* Font definitions - using system fonts as fallback */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #f5f8fa;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Grid Pattern Background */
+.grid-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(114, 57, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(114, 57, 234, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Left Panel */
+.left-panel {
+    flex: 1;
+    background: #1e1e2d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.brand-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.logo i {
+    font-size: 48px;
+    color: white;
+}
+
+.brand-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.brand-description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* Right Panel */
+.right-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: white;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #181c32;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #a1a5b7;
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+/* Form Styles */
+form {
+    margin-top: 30px;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3f4254;
+    margin-bottom: 8px;
+    text-align: right;
+}
+
+.form-label .required {
+    color: #f1416c;
+    margin-right: 3px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e4e6ef;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f9f9f9;
+    color: #3f4254;
+    transition: all 0.3s;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    text-align: right;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #7239ea;
+    box-shadow: 0 0 0 3px rgba(114, 57, 234, 0.1);
+    background: white;
+}
+
+.form-control::placeholder {
+    color: #a1a5b7;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #a1a5b7;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #7239ea;
+}
+
+.error-message {
+    color: #f1416c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    font-weight: 500;
+    text-align: right;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #7239ea;
+}
+
+.form-check-label {
+    font-size: 14px;
+    color: #5e6278;
+    cursor: pointer;
+    margin: 0;
+}
+
+.forgot-link {
+    color: #7239ea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: #9d5cff;
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    background: linear-gradient(135deg, #7239ea 0%, #9d5cff 100%);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(114, 57, 234, 0.2);
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #6729e0 0%, #8d4cf5 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(114, 57, 234, 0.3);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        min-height: 300px;
+        padding: 30px 20px;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .logo i {
+        font-size: 36px;
+    }
+
+    .brand-name {
+        font-size: 24px;
+    }
+
+    .brand-description {
+        font-size: 14px;
+    }
+
+    .right-panel {
+        padding: 30px 20px;
+    }
+
+    .login-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .left-panel {
+        min-height: 250px;
+        padding: 20px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .logo i {
+        font-size: 28px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .forgot-link {
+        width: 100%;
+        text-align: right;
+    }
+}
+
