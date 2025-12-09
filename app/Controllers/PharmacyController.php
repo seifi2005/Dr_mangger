@@ -82,6 +82,7 @@ class PharmacyController extends Controller
         $pharmacyName = $data['name'] ?? '';
         $this->activityLogService->logCreate('pharmacy', $id, $pharmacyName);
         
+        $_SESSION['success'] = 'داروخانه با موفقیت افزوده شد';
         $this->redirect('/pharmacies/details/' . $id);
     }
 
@@ -181,6 +182,7 @@ class PharmacyController extends Controller
         $pharmacyName = $pharmacy['name'] ?? '';
         $this->activityLogService->logUpdate('pharmacy', $id, $pharmacyName);
         
+        $_SESSION['success'] = 'اطلاعات داروخانه با موفقیت ویرایش شد';
         $this->redirect('/pharmacies/details/' . $id);
     }
 

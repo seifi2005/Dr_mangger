@@ -2,18 +2,70 @@ function toggleSidebar() {
     const sidebar = document.getElementById('sidebarPrimary');
     const mainContent = document.getElementById('mainContent');
     const toggleIcon = document.getElementById('toggleIcon');
+    const isMobile = window.innerWidth <= 767;
 
-    sidebar.classList.toggle('closed');
-    mainContent.classList.toggle('expanded');
-
-    if (sidebar.classList.contains('closed')) {
-        toggleIcon.classList.remove('fa-chevron-left');
-        toggleIcon.classList.add('fa-chevron-right');
+    if (isMobile) {
+        // On mobile, toggle overlay mode
+        sidebar.classList.toggle('mobile-open');
+        document.body.classList.toggle('sidebar-open');
     } else {
-        toggleIcon.classList.remove('fa-chevron-right');
-        toggleIcon.classList.add('fa-chevron-left');
+        // On desktop/tablet, toggle closed/expanded
+        sidebar.classList.toggle('closed');
+        mainContent.classList.toggle('expanded');
+
+        if (sidebar.classList.contains('closed')) {
+            toggleIcon.classList.remove('fa-chevron-left');
+            toggleIcon.classList.add('fa-chevron-right');
+        } else {
+            toggleIcon.classList.remove('fa-chevron-right');
+            toggleIcon.classList.add('fa-chevron-left');
+        }
     }
 }
+
+// Close mobile sidebar when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebarPrimary');
+    
+    document.addEventListener('click', function(e) {
+        const isMobile = window.innerWidth <= 767;
+        if (isMobile && sidebar.classList.contains('mobile-open')) {
+            // If clicking outside sidebar
+            if (!sidebar.contains(e.target) && !e.target.closest('.toggle-sidebar-btn') && !e.target.closest('.sidebar-secondary')) {
+                sidebar.classList.remove('mobile-open');
+                document.body.classList.remove('sidebar-open');
+            }
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        const isMobileNow = window.innerWidth <= 767;
+        if (!isMobileNow) {
+            if (sidebar.classList.contains('mobile-open')) {
+                sidebar.classList.remove('mobile-open');
+                document.body.classList.remove('sidebar-open');
+            }
+        }
+    });
+
+    // Add data-label attributes to table cells for mobile view
+    const tables = document.querySelectorAll('.table-custom');
+    tables.forEach(table => {
+        const headers = table.querySelectorAll('thead th');
+        const rows = table.querySelectorAll('tbody tr');
+        
+        headers.forEach((header, index) => {
+            const label = header.textContent.trim();
+            rows.forEach(row => {
+                const cell = row.querySelectorAll('td')[index];
+                if (cell) {
+                    cell.setAttribute('data-label', label);
+                }
+            });
+        });
+    });
+});
 
 // مدیریت منوها به صورت تب‌بندی
 document.addEventListener('DOMContentLoaded', function() {

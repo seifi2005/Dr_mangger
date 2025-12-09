@@ -79,6 +79,7 @@ class MedicalCenterController extends Controller
         $centerName = $data['name'] ?? '';
         $this->activityLogService->logCreate('medical_center', $id, $centerName);
         
+        $_SESSION['success'] = 'مرکز درمانی با موفقیت افزوده شد';
         $this->redirect('/medical-centers/list');
     }
 
@@ -161,6 +162,7 @@ class MedicalCenterController extends Controller
         $centerName = $center['name'] ?? '';
         $this->activityLogService->logUpdate('medical_center', $id, $centerName);
         
+        $_SESSION['success'] = 'اطلاعات مرکز درمانی با موفقیت ویرایش شد';
         $this->redirect('/medical-centers/details/' . $id);
     }
 

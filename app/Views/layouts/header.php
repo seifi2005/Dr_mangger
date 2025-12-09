@@ -34,4 +34,43 @@ $currentController = $currentController ?? 'dashboard';
     <link rel="stylesheet" href="<?php echo htmlspecialchars($baseUrl); ?>/assets/css/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
+<?php
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!-- Message Display Component -->
+<div id="messageContainer" style="position: fixed; top: 20px; left: 20px; right: 20px; z-index: 9999; max-width: 500px; margin: 0 auto;">
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <i class="fas fa-check-circle me-2"></i>
+            <?php echo htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
+            <button type="button" class="btn-close" onclick="this.parentElement.remove()" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-bottom: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            <?php echo htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
+            <button type="button" class="btn-close" onclick="this.parentElement.remove()" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+</div>
+<script>
+// Auto-hide messages after 5 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const alerts = document.querySelectorAll('#messageContainer .alert');
+    alerts.forEach(function(alert) {
+        setTimeout(function() {
+            alert.style.transition = 'opacity 0.5s';
+            alert.style.opacity = '0';
+            setTimeout(function() {
+                alert.remove();
+            }, 500);
+        }, 5000);
+    });
+});
+</script>
 

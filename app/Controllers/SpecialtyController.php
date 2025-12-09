@@ -83,6 +83,7 @@ class SpecialtyController extends Controller
         $specialtyName = $data['name_fa'] ?? '';
         $this->activityLogService->logCreate('specialty', $id, $specialtyName);
         
+        $_SESSION['success'] = 'رشته پزشکی با موفقیت افزوده شد';
         $this->redirect('/specialties/details/' . $id);
     }
 
@@ -167,6 +168,7 @@ class SpecialtyController extends Controller
         $specialtyName = $specialty['name_fa'] ?? '';
         $this->activityLogService->logUpdate('specialty', $id, $specialtyName);
         
+        $_SESSION['success'] = 'اطلاعات رشته پزشکی با موفقیت ویرایش شد';
         $this->redirect('/specialties/details/' . $id);
     }
 

@@ -168,6 +168,7 @@ class DoctorController extends Controller
             $doctorName = ($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? '');
             $this->activityLogService->logCreate('doctor', $id, $doctorName);
             
+            $_SESSION['success'] = 'پزشک با موفقیت افزوده شد';
             $this->redirect('/doctors/details/' . $id);
         } catch (\PDOException $e) {
             // Handle database errors (like duplicate national_code)
@@ -292,6 +293,7 @@ class DoctorController extends Controller
         $doctorName = ($doctor['first_name'] ?? '') . ' ' . ($doctor['last_name'] ?? '');
         $this->activityLogService->logUpdate('doctor', $id, $doctorName);
         
+        $_SESSION['success'] = 'اطلاعات پزشک با موفقیت ویرایش شد';
         $this->redirect('/doctors/details/' . $id);
     }
 

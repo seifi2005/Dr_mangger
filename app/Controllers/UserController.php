@@ -125,6 +125,7 @@ class UserController extends Controller
         $userName = ($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? '');
         $this->activityLogService->logCreate('user', $id, $userName);
         
+        $_SESSION['success'] = 'کاربر با موفقیت افزوده شد';
         $this->redirect('/users/list');
     }
 
@@ -220,6 +221,7 @@ class UserController extends Controller
         $userName = ($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '');
         $this->activityLogService->logUpdate('user', $id, $userName);
         
+        $_SESSION['success'] = 'اطلاعات کاربر با موفقیت ویرایش شد';
         $this->redirect('/users/details/' . $id);
     }
 
